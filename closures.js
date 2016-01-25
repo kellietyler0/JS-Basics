@@ -4,16 +4,16 @@ var outer = function(){
   var name = 'Tyler';
   return function(){
     return 'The original name was ' + name;
-  }
-}
+  };
+};
 //Above you're given a function that returns another function which has a closure over the name variable.
 //Invoke outer saving the return value into another variable called 'inner'.
 
-  //Code Here
+  var inner = outer();
 
 //Once you do that, invoke inner.
 
-  //Code Here
+  console.log(inner());
 
 
 
@@ -32,7 +32,16 @@ var callFriend = function(){
 //Above you're given a callFriend function that returns another function.
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
-  //Code Here
+  var callFriend = function(){
+  var friend = 'Jake';
+    return function callF(){
+    return 'Calling ' + friend + ' at ' + "435-215-9248";
+  }
+  return callF;
+};
+
+var message = callFriend();
+console.log(message());
 
 
 
@@ -44,13 +53,19 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
-  var count = makeCounter();
-  count(); // 1
-  count(); // 2
-  count(); // 3
-  count(); // 4
-
+function  makeCounter() {
+  var count = 0;
+  
+  function counter() {
+    count = count + 1;
+    return count;
+  }
+  return counter;
+}
+var doCount = makeCounter();
+console.log(doCount());
+console.log(doCount());
+console.log(doCount());
 
 
 //Next Problem
@@ -61,7 +76,12 @@ var callFriend = function(){
   Write a function named codeLove that returns the string 'I love code'. Write a second function named codeFriend that accepts the first function as it's first parameter. The second function should return a new third function. Store the third function in a variable, codeEcho which, when invoked, invokes the first, original function that was passed in, but will only ever do so once (returns null after first invocation).
 */
 
-  //Code Here
+var codeLove = "I love code";
+var codeFriend = codeLove;
+console.log(codeFriend);
+
+var codeEcho = codeFriend;
+console.log(codeEcho);
 
 
 
